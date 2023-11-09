@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>advanced calculator</title>
+    <style>
+      body {
+        background-image: url('https://example.com/background.jpg');
+        background-size: cover;
+        font-family: Arial, sans-serif;
+      }
+      .calculator {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 50px auto;
+        padding: 20px;
+        width: 300px;
+      }
+      .calculator h2 {
+        margin-top: 0;
+      }
+      .calculator input[type="text"] {
+        background-color: #f2f2f2;
+        border: none;
+        border-radius: 5px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding: 10px;
+        text-align: right;
+        width: 100%;
+      }
+      .calculator button {
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        margin: 5px;
+        padding: 10px;
+        width: 50%;
+      }
+      .calculator button:hover {
+        background-color: #3e8e41;
+      }
+      .calculator button:active {
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .calculator .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .calculator .col {
+        float: left;
+        width: 25%;
+      }
+      .calculator .col:nth-child(4) {
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <h2>Advanced Calculator</h2>
+      <input type="text" id="result" disabled>
+      <div class="row">
+        <div class="col"><button onclick="clearResult()">C</button></div>
+        <div class="col"><button onclick="backspace()">←</button></div>
+        <div class="col"><button onclick="insert('%')">%</button></div>
+        <div class="col"><button onclick="insert('/')">÷</button></div>
+      </div>
+      <div class="row">
+        <div class="col"><button onclick="insert('7')">7</button></div>
+        <div class="col"><button onclick="insert('8')">8</button></div>
+        <div class="col"><button onclick="insert('9')">9</button></div>
+        <div class="col"><button onclick="insert('*')">x</button></div>
+      </div>
+      <div class="row">
+        <div class="col"><button onclick="insert('4')">4</button></div>
+        <div class="col"><button onclick="insert('5')">5</button></div>
+        <div class="col"><button onclick="insert('6')">6</button></div>
+        <div class="col"><button onclick="insert('-')">-</button></div>
+      </div>
+      <div class="row">
+        <div class="col"><button onclick="insert('1')">1</button></div>
+        <div class="col"><button onclick="insert('2')">2</button></div>
+        <div class="col"><button onclick="insert('3')">3</button></div>
+        <div class="col"><button onclick="insert('+')">+</button></div>
+      </div>
+      <div class="row">
+        <div class="col"><button onclick="insert('0')">0</button></div>
+        <div class="col"><button onclick="insert('.')">.</button></div>
+        <div class="col"><button onclick="calculate()">=</button></div>
+      </div>
+    </div>
+    <script>
+      function insert(value) {
+        document.getElementById('result').value += value;
+      }
+      function clearResult() {
+        document.getElementById('result').value = '';
+      }
+      function backspace() {
+        var result = document.getElementById('result').value;
+        document.getElementById('result').value = result.substring(0, result.length - 1);
+      }
+      function calculate() {
+        var result = eval(document.getElementById('result').value);
+        document.getElementById('result').value = result;
+      }
+    </script>
+  </body>
+</html>
